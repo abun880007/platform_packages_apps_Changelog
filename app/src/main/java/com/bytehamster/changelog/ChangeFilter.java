@@ -35,17 +35,19 @@ class ChangeFilter {
         boolean hidden = false;
 
         if (!displayAll) {
-            if (c.project.startsWith("android_device_"))   hidden = true;
-            if (c.project.startsWith("android_hardware_")) hidden = true;
-            if (c.project.startsWith("android_kernel_"))   hidden = true;
-            if (mUseProjectsList.contains(c.project))      hidden = false;
+            hidden = (c.project.startsWith("android_device_") ||
+                    c.project.startsWith("android_hardware_") ||
+                    c.project.startsWith("android_kernel_")) &&
+                            !mUseProjectsList.contains(c.project);
         }
+
         if (!translations) {
-            if (c.message.contains("translation"))  hidden = true;
-            if (c.message.contains("localisation")) hidden = true;
+            hidden = c.message.contains("translation") ||
+                    c.message.contains("localisation");
         }
+
         if (!branch.equals("")) {
-            if (! c.branch.startsWith(branch)) hidden = true;
+            hidden = !c.branch.startsWith(branch);
         }
 
         return hidden;
