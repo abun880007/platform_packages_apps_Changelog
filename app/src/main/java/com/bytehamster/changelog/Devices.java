@@ -15,12 +15,12 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class Devices {
-    public static ArrayList<Map<String, Object>> loadDefinitions(Context context, String filter) {
+class Devices {
+    static ArrayList<Map<String, Object>> loadDefinitions(Context context, String filter) {
             return parseDefinitions(context.getResources().openRawResource(R.raw.projects), filter);
     }
 
-    static ArrayList<Map<String, Object>> parseDefinitions(InputStream is, String filter) {
+    private static ArrayList<Map<String, Object>> parseDefinitions(InputStream is, String filter) {
         final ArrayList<Map<String, Object>> mDevicesList = new ArrayList<>();
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();

@@ -82,7 +82,7 @@ public class Main extends Activity {
     private Document mWatchedDoc = null;
     private ChangeAdapter mChangeAdapter       = null;
     private int mChangesCount = 0;
-    private String GERRIT_URL = DEFAULT_GERRIT_URL;
+    private String mGerritUrl = DEFAULT_GERRIT_URL;
 
     boolean itemClicked = true;
 
@@ -93,8 +93,8 @@ public class Main extends Activity {
 
         mActivity = this;
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        GERRIT_URL = mSharedPreferences.getString("server_url", DEFAULT_GERRIT_URL);
-        mChangeAdapter = new ChangeAdapter(mActivity, mChangesList, GERRIT_URL);
+        mGerritUrl = mSharedPreferences.getString("server_url", DEFAULT_GERRIT_URL);
+        mChangeAdapter = new ChangeAdapter(mActivity, mChangesList, mGerritUrl);
         mListView = findViewById(android.R.id.list);
 
         mListView.setAdapter(mChangeAdapter);
@@ -129,7 +129,7 @@ public class Main extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        GERRIT_URL = mSharedPreferences.getString("server_url", DEFAULT_GERRIT_URL);
+        mGerritUrl = mSharedPreferences.getString("server_url", DEFAULT_GERRIT_URL);
 
         if(mJustStarted) {
             mJustStarted = false;
@@ -145,7 +145,6 @@ public class Main extends Activity {
 
         new Thread() {
             public void run() {
-
                 if (!mChangesList.isEmpty()) mChangesList.clear();
 
                 mActivity.runOnUiThread(new Runnable() {
@@ -157,14 +156,14 @@ public class Main extends Activity {
                 });
 
 
-                ChangeLoader loader = new ChangeLoader(mActivity, mSharedPreferences, GERRIT_URL);
+                ChangeLoader loader = new ChangeLoader(mActivity, mSharedPreferences, mGerritUrl);
                 ChangeFilter filter = new ChangeFilter(mSharedPreferences);
 
                 List<Change> changes;
                 try {
                     changes = loader.loadAll();
                 } catch (ChangeLoader.LoadException e) {
-                    Dialogs.usingCacheAlert(mActivity, GERRIT_URL, new DialogInterface.OnClickListener() {
+                    Dialogs.usingCacheAlert(mActivity, mGerritUrl, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             load();
@@ -175,17 +174,17 @@ public class Main extends Activity {
 
                 mChangesCount = 0;
                 mLastDate = "-";
-                final int change_size = changes.size();
+                final int changeSize = changes.size();
                 for (Change currentChange : changes) {
                     if (filter.isHidden(currentChange)) {
                         continue;
                     }
 
                     if (!mLastDate.equals(currentChange.dateDay)) {
-                        Map<String, Object> new_item = new HashMap<String, Object>();
-                        new_item.put("title", currentChange.dateDay);
-                        new_item.put("type", Change.TYPE_HEADER);
-                        mChangesList.add(new_item);
+                        Map<String, Object> newItem = new HashMap<>();
+                        newItem.put("title", currentChange.dateDay);
+                        newItem.put("type", Change.TYPE_HEADER);
+                        mChangesList.add(newItem);
                         mLastDate = currentChange.dateDay;
                     }
                     mChangesList.add(currentChange.getHashMap(mActivity));
@@ -199,7 +198,7 @@ public class Main extends Activity {
                 mActivity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (change_size == 0) {
+                        if (changeSize == 0) {
                             ((TextView) findViewById(android.R.id.empty)).setText(R.string.no_changes);
                         }
                         mChangeAdapter.update(mChangesList);
@@ -412,13 +411,12 @@ public class Main extends Activity {
     private final SimpleAdapter.ViewBinder all_devices_view_binder = new SimpleAdapter.ViewBinder() {
         @Override
         public boolean setViewValue(final View view, Object data, final String textRepresentation) {
-            switch (view.getId()) {
-                case R.id.aside:
-                    if (Build.DEVICE.toLowerCase(Locale.getDefault()).equals(textRepresentation) ||
-                            Build.MODEL.toLowerCase(Locale.getDefault()).replace("gt-", "").equals(textRepresentation)) {
-                        ((TextView) view).setText(R.string.this_device);
-                    } else ((TextView) view).setText("");
-                    return true;
+            if (view.getId() == R.id.aside) {
+                if (Build.DEVICE.toLowerCase(Locale.getDefault()).equals(textRepresentation) ||
+                        Build.MODEL.toLowerCase(Locale.getDefault()).replace("gt-", "").equals(textRepresentation)) {
+                    ((TextView) view).setText(R.string.this_device);
+                } else ((TextView) view).setText("");
+                return true;
             }
             return false;
         }
@@ -468,7 +466,7 @@ public class Main extends Activity {
     private final AdapterView.OnItemLongClickListener MainListLongClickListener = new AdapterView.OnItemLongClickListener() {
         @Override
         public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-            if ((Integer) mChangesList.get(position).get("type") == Change.TYPE_ITEM) {
+            if ((int) mChangesList.get(position).get("type") == Change.TYPE_ITEM) {
                 AlertDialog.Builder d = new AlertDialog.Builder(mActivity);
                 d.setCancelable(false);
                 d.setMessage((String) mChangesList.get(position).get("title"));
@@ -476,7 +474,7 @@ public class Main extends Activity {
                 d.setPositiveButton("Gerrit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Uri uri = Uri.parse(GERRIT_URL + "#/c/" + mChangesList.get(position).get("number"));
+                        Uri uri = Uri.parse(mGerritUrl + "#/c/" + mChangesList.get(position).get("number"));
                         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                         startActivity(intent);
                     }
@@ -491,10 +489,10 @@ public class Main extends Activity {
     private final AdapterView.OnItemClickListener MainListClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-            if ((Integer) mChangesList.get(position).get("type") == Change.TYPE_ITEM) {
+            if ((int) mChangesList.get(position).get("type") == Change.TYPE_ITEM) {
 
                 if (mSharedPreferences.getString("list_action", "popup").equals("popup")) {
-                    Dialogs.changeDetails(mActivity, mChangesList.get(position), GERRIT_URL);
+                    Dialogs.changeDetails(mActivity, mChangesList.get(position), mGerritUrl);
                 } else {
                     final TextView info = view.findViewById(R.id.info);
                     final TextView title = view.findViewById(R.id.title);

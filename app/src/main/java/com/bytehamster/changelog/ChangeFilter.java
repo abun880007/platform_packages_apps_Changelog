@@ -16,14 +16,14 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 class ChangeFilter {
-    private final List<String> mUseProjectsList = new ArrayList<String>();
+    private final List<String> mUseProjectsList = new ArrayList<>();
 
     private final boolean displayAll;
     private final boolean translations;
     private final String branch;
     private final SharedPreferences prefs;
 
-    public ChangeFilter(SharedPreferences prefs) {
+    ChangeFilter(SharedPreferences prefs) {
         this.prefs = prefs;
         displayAll = prefs.getBoolean("display_all", true);
         translations = prefs.getBoolean("translations", true);
@@ -51,7 +51,7 @@ class ChangeFilter {
         return hidden;
     }
 
-    void refreshWatchedDevices() {
+    private void refreshWatchedDevices() {
         String watchedDevices = prefs.getString("watched_devices", "<?xml version=\"1.0\" encoding=\"UTF-8\"?><devicesList></devicesList>");
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();

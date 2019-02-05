@@ -22,16 +22,16 @@ class ChangeLoader {
     private long firstCachedDate = 0;
     private int DownloadAtOnce = 1;
     private List<Change> cached = null;
-    String gerrit_url = "";
+    private String gerritUrl;
 
-    public ChangeLoader(Context c, SharedPreferences prefs, String gerrit_url) {
+    ChangeLoader(Context c, SharedPreferences prefs, String gerritUrl) {
         db = new ChangeCacheDatabase(c);
         preferences = prefs;
-        this.gerrit_url = gerrit_url;
+        this.gerritUrl = gerritUrl;
     }
 
-    public List<Change> loadAll() throws LoadException {
-        List<Change> changes = new ArrayList<Change>();
+    List<Change> loadAll() throws LoadException {
+        List<Change> changes = new ArrayList<>();
         cached  = loadCached();
         if(cached.isEmpty()) {
             DownloadAtOnce = 100;
@@ -50,7 +50,7 @@ class ChangeLoader {
         return changes;
     }
 
-    public List<Change> loadCached() {
+    private List<Change> loadCached() {
         if(Build.TIME != preferences.getLong("cachedBuildTime",0)) {
             preferences.edit().putLong("cachedBuildTime",Build.TIME).apply();
             db.clearCache();
@@ -69,22 +69,22 @@ class ChangeLoader {
     }
 
     private List<Change> loadNew() throws LoadException {
-        List<Change> changes = new ArrayList<Change>();
+        List<Change> changes = new ArrayList<>();
 
         try {
             int skipEntries = 0;
 
             loader:while(skipEntries<Main.MAX_CHANGES_FETCH) {
-                String query_url = gerrit_url + "changes/?q=status:merged&pp=0&o=CURRENT_REVISION"
+                String queryUrl = gerritUrl + "changes/?q=status:merged&pp=0&o=CURRENT_REVISION"
                         + "&o=CURRENT_COMMIT&o=MESSAGES&o=DETAILED_ACCOUNTS&n=" + DownloadAtOnce;
-                query_url = query_url + "&S=" + skipEntries;
+                queryUrl = queryUrl + "&S=" + skipEntries;
 
-                String res = httpRequest(query_url);
+                String res = httpRequest(queryUrl);
                 res = res.replace(")]}'\n", ""); // Gerrit uses malformed JSON
                 JSONArray result = new JSONArray(res);
 
                 int size = result.length();
-                for(int i = 0;i<size;i++) {
+                for(int i = 0; i < size; i++) {
                     Change c = parseResult((JSONObject)result.get(i));
                     if(c != null) {
                         if(firstCachedDate >= c.lastModified) {

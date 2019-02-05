@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 class StringTools {
 
-    public static String XmlToString(Context c, Document doc) {
+    static String XmlToString(Context c, Document doc) {
         try {
             DOMSource domSource = new DOMSource(doc);
             StringWriter writer = new StringWriter();
@@ -34,7 +34,7 @@ class StringTools {
         return "Error";
     }
 
-    public static String StreamToString(java.io.InputStream is) {
+    static String StreamToString(java.io.InputStream is) {
         java.util.Scanner scanner = new java.util.Scanner(is);
         scanner.useDelimiter("\\A");
         String ret = scanner.hasNext() ? scanner.next() : "";

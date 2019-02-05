@@ -28,7 +28,7 @@ class ChangeCacheDatabase extends SQLiteOpenHelper {
     private static final String KEY_ADD3    = "add3";
     private static final String KEY_ADD4    = "add4";
 
-    public ChangeCacheDatabase(Context context) {
+    ChangeCacheDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -58,14 +58,14 @@ class ChangeCacheDatabase extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void clearCache() {
+    void clearCache() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CACHE);
         onCreate(db);
         db.close();
     }
 
-    public void addChange(Change change) {
+    void addChange(Change change) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -88,7 +88,7 @@ class ChangeCacheDatabase extends SQLiteOpenHelper {
     }
 
     public List<Change> getChanges( ) {
-        List<Change> changeList = new ArrayList<Change>();
+        List<Change> changeList = new ArrayList<>();
         String selectQuery = "SELECT  * FROM " + TABLE_CACHE + " ORDER BY " + KEY_LASTMOD + " DESC," + KEY_ID
                 + " LIMIT " + Main.MAX_CHANGES_DB;
 

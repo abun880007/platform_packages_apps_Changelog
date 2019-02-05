@@ -18,8 +18,8 @@ import android.widget.TextView;
 
 class Dialogs {
 
-    public static void usingCacheAlert(final Activity activity, final String gerrit_url,
-                                       final DialogInterface.OnClickListener retryPressedListener){
+    static void usingCacheAlert(final Activity activity, final String gerrit_url,
+                                final DialogInterface.OnClickListener retryPressedListener){
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -41,7 +41,7 @@ class Dialogs {
         });
     }
 
-	public static void changeDetails(final Activity a, final Map<String, Object> change, final String gerrit_url){
+	static void changeDetails(final Activity a, final Map<String, Object> change, final String gerrit_url){
 		String msg = a.getResources().getString(R.string.change_content);
 		msg = msg.replace("%title", (String)change.get("title"));
 		msg = msg.replace("%owner", (String)change.get("owner"));

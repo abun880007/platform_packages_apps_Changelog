@@ -21,11 +21,11 @@ class ChangeAdapter extends BaseAdapter {
     private final LayoutInflater mInflater;
 
     private ArrayList<Map<String, Object>> mArrayList;
-    private SharedPreferences mSharedPreferences = null;
-    private String gerrit_url = "";
+    private SharedPreferences mSharedPreferences;
+    private String gerritUrl;
 
-    public ChangeAdapter(Activity a, ArrayList<Map<String, Object>> arrayList, String gerrit_url) {
-        this.gerrit_url = gerrit_url;
+    ChangeAdapter(Activity a, ArrayList<Map<String, Object>> arrayList, String gerritUrl) {
+        this.gerritUrl = gerritUrl;
         mArrayList = arrayList;
         mActivity = a;
         mInflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -33,7 +33,7 @@ class ChangeAdapter extends BaseAdapter {
     }
 
     @SuppressWarnings("unchecked")
-    public void update(ArrayList<Map<String, Object>> arrayList) {
+    void update(ArrayList<Map<String, Object>> arrayList) {
         mArrayList = (ArrayList<Map<String, Object>>) arrayList.clone();
         this.notifyDataSetChanged();
     }
@@ -65,7 +65,7 @@ class ChangeAdapter extends BaseAdapter {
         if (mArrayList.size() >= position) {
 
             if (convertView == null) {
-                switch (((Integer) mArrayList.get(position).get("type"))) {
+                switch (((int) mArrayList.get(position).get("type"))) {
                 case Change.TYPE_ITEM:
                     view = mInflater.inflate(R.layout.list_entry, parent, false);
                     view.setTag(Change.TYPE_ITEM);
@@ -76,7 +76,7 @@ class ChangeAdapter extends BaseAdapter {
                     break;
                 }
             } else if (!convertView.getTag().equals(mArrayList.get(position).get("type"))) {
-                switch (((Integer) mArrayList.get(position).get("type"))) {
+                switch (((int) mArrayList.get(position).get("type"))) {
                 case Change.TYPE_ITEM:
                     view = mInflater.inflate(R.layout.list_entry, parent, false);
                     view.setTag(Change.TYPE_ITEM);
@@ -89,17 +89,17 @@ class ChangeAdapter extends BaseAdapter {
                 }
             } else view = convertView;
 
-            switch (((Integer) mArrayList.get(position).get("type"))) {
+            switch (((int) mArrayList.get(position).get("type"))) {
             case Change.TYPE_ITEM:
                 ((TextView) view.findViewById(R.id.title)).setText((String) mArrayList.get(position).get("title"));
                 ((TextView) view.findViewById(R.id.secondline)).setText((String) mArrayList.get(position).get("secondline"));
                 ((TextView) view.findViewById(R.id.info)).setText((String) mArrayList.get(position).get("expand"));
 
-                int visibility = (Integer) mArrayList.get(position).get("visibility");
+                int visibility = (int) mArrayList.get(position).get("visibility");
                 view.findViewById(R.id.info).setVisibility(visibility);
                 view.findViewById(R.id.buttons).setVisibility(visibility);
 
-                if ((Boolean) mArrayList.get(position).get("is_new") && mSharedPreferences.getBoolean("animate_new", true)) {
+                if ((boolean) mArrayList.get(position).get("is_new") && mSharedPreferences.getBoolean("animate_new", true)) {
                     view.findViewById(R.id.is_new).setVisibility(View.VISIBLE);
                 } else {
                     view.findViewById(R.id.is_new).setVisibility(View.GONE);
@@ -109,7 +109,7 @@ class ChangeAdapter extends BaseAdapter {
                     @Override
                     public void onClick(View v) {
                         try {
-                            Uri uri = Uri.parse(gerrit_url + "#/c/" + mArrayList.get(position).get("number"));
+                            Uri uri = Uri.parse(gerritUrl + "#/c/" + mArrayList.get(position).get("number"));
                             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                             mActivity.startActivity(intent);
                         } catch (ActivityNotFoundException e) {
