@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectsList>
+    <git name="platform_frameworks_base"/>
+    <git name="platform_manifest"/>
+    <git name="platform_packages_apps_Launcher3"/>
+    <git name="platform_packages_apps_OwlsNest"/>
+    <git name="platform_packages_apps_Settings"/>
+    <git name="platform_packages_apps_SmartNavSettings"/>
+</projectsList>

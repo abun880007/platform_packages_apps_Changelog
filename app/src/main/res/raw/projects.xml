@@ -8,13 +8,6 @@
                 <git name="device_essential_mata"/>
                 <git name="kernel_essential_msm8998"/>
                 <git name="vendor_essential"/>
-                <git name="platform_frameworks_base"/>
-                <git name="platform_manifest"/>
-                <git name="platform_packages_apps_Launcher3"/>
-                <git name="platform_packages_apps_OwlsNest"/>
-                <git name="platform_packages_apps_Settings"/>
-                <git name="platform_packages_apps_SmartNavSettings"/>
-                <git name="platform_vendor_aosip"/>
             </repos>
         </device>
     </oem>
@@ -28,13 +21,6 @@
                 <git name="device_google_crosshatch-sepolicy"/>
                 <git name="kernel_google_bluecross"/>
                 <git name="vendor_google"/>
-                <git name="platform_frameworks_base"/>
-                <git name="platform_manifest"/>
-                <git name="platform_packages_apps_Launcher3"/>
-                <git name="platform_packages_apps_OwlsNest"/>
-                <git name="platform_packages_apps_Settings"/>
-                <git name="platform_packages_apps_SmartNavSettings"/>
-                <git name="platform_vendor_aosip"/>
             </repos>
         </device>
         <device>
@@ -45,13 +31,6 @@
                 <git name="device_google_crosshatch-sepolicy"/>
                 <git name="kernel_google_bluecross"/>
                 <git name="vendor_google"/>
-                <git name="platform_frameworks_base"/>
-                <git name="platform_manifest"/>
-                <git name="platform_packages_apps_Launcher3"/>
-                <git name="platform_packages_apps_OwlsNest"/>
-                <git name="platform_packages_apps_Settings"/>
-                <git name="platform_packages_apps_SmartNavSettings"/>
-                <git name="platform_vendor_aosip"/>
             </repos>
         </device>
     </oem>
@@ -61,13 +40,6 @@
             <code>potter</code>
             <repos>
                 <git name="device_moto_potter"/>
-                <git name="platform_frameworks_base"/>
-                <git name="platform_manifest"/>
-                <git name="platform_packages_apps_Launcher3"/>
-                <git name="platform_packages_apps_OwlsNest"/>
-                <git name="platform_packages_apps_Settings"/>
-                <git name="platform_packages_apps_SmartNavSettings"/>
-                <git name="platform_vendor_aosip"/>
             </repos>
         </device>
     </oem>
@@ -80,13 +52,6 @@
                 <git name="android_device_oneplus_extras"/>
                 <git name="android_kernel_oneplus_msm8996"/>
                 <git name="android_vendor_oneplus"/>
-                <git name="platform_frameworks_base"/>
-                <git name="platform_manifest"/>
-                <git name="platform_packages_apps_Launcher3"/>
-                <git name="platform_packages_apps_OwlsNest"/>
-                <git name="platform_packages_apps_Settings"/>
-                <git name="platform_packages_apps_SmartNavSettings"/>
-                <git name="platform_vendor_aosip"/>
             </repos>
         </device>
         <device>
@@ -97,13 +62,6 @@
                 <git name="device_oneplus_sdm845-common"/>
                 <git name="kernel_oneplus_sdm845"/>
                 <git name="vendor_oneplus_sdm845-common"/>
-                <git name="platform_frameworks_base"/>
-                <git name="platform_manifest"/>
-                <git name="platform_packages_apps_Launcher3"/>
-                <git name="platform_packages_apps_OwlsNest"/>
-                <git name="platform_packages_apps_Settings"/>
-                <git name="platform_packages_apps_SmartNavSettings"/>
-                <git name="platform_vendor_aosip"/>
             </repos>
         </device>
         <device>
@@ -114,13 +72,6 @@
                 <git name="device_oneplus_sdm845-common"/>
                 <git name="kernel_oneplus_sdm845"/>
                 <git name="vendor_oneplus_sdm845-common"/>
-                <git name="platform_frameworks_base"/>
-                <git name="platform_manifest"/>
-                <git name="platform_packages_apps_Launcher3"/>
-                <git name="platform_packages_apps_OwlsNest"/>
-                <git name="platform_packages_apps_Settings"/>
-                <git name="platform_packages_apps_SmartNavSettings"/>
-                <git name="platform_vendor_aosip"/>
             </repos>
         </device>
     </oem>
@@ -132,13 +83,6 @@
                 <git name="device_xiaomi_dipper"/>
                 <git name="kernel_xiaomi_sdm845"/>
                 <git name="proprietary_vendor_xiaomi"/>
-                <git name="platform_frameworks_base"/>
-                <git name="platform_manifest"/>
-                <git name="platform_packages_apps_Launcher3"/>
-                <git name="platform_packages_apps_OwlsNest"/>
-                <git name="platform_packages_apps_Settings"/>
-                <git name="platform_packages_apps_SmartNavSettings"/>
-                <git name="platform_vendor_aosip"/>
             </repos>
         </device>
         <device>
@@ -148,13 +92,6 @@
                 <git name="device_xiaomi_beryllium"/>
                 <git name="kernel_xiaomi_sdm845"/>
                 <git name="proprietary_vendor_xiaomi"/>
-                <git name="platform_frameworks_base"/>
-                <git name="platform_manifest"/>
-                <git name="platform_packages_apps_Launcher3"/>
-                <git name="platform_packages_apps_OwlsNest"/>
-                <git name="platform_packages_apps_Settings"/>
-                <git name="platform_packages_apps_SmartNavSettings"/>
-                <git name="platform_vendor_aosip"/>
             </repos>
         </device>
         <device>
@@ -164,13 +101,6 @@
                 <git name="device_xiaomi_whyred"/>
                 <git name="kernel_xiaomi_sdm660"/>
                 <git name="proprietary_vendor_xiaomi"/>
-                <git name="platform_frameworks_base"/>
-                <git name="platform_manifest"/>
-                <git name="platform_packages_apps_Launcher3"/>
-                <git name="platform_packages_apps_OwlsNest"/>
-                <git name="platform_packages_apps_Settings"/>
-                <git name="platform_packages_apps_SmartNavSettings"/>
-                <git name="platform_vendor_aosip"/>
             </repos>
         </device>
     </oem>

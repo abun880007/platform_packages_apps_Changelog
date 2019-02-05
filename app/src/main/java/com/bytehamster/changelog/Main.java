@@ -156,7 +156,7 @@ public class Main extends Activity {
 
 
                 ChangeLoader loader = new ChangeLoader(mActivity, mSharedPreferences, mGerritUrl);
-                ChangeFilter filter = new ChangeFilter(mSharedPreferences);
+                ChangeFilter filter = new ChangeFilter(mActivity);
 
                 List<Change> changes;
                 try {

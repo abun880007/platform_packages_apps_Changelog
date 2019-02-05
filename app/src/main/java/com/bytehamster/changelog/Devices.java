@@ -20,6 +20,30 @@ class Devices {
             return parseDefinitions(context.getResources().openRawResource(R.raw.projects), filter);
     }
 
+    static ArrayList<String> getCommonProjects(final Context context) {
+        final ArrayList<String> commonProjects = new ArrayList<>();
+        final DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        final DocumentBuilder db;
+        final Document doc;
+        try {
+            db = dbf.newDocumentBuilder();
+            doc = db.parse(context.getResources().openRawResource(R.raw.common_projects));
+            doc.getDocumentElement().normalize();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return commonProjects;
+        }
+        final NodeList projectsList = doc.getDocumentElement().getChildNodes();
+        for (int i = 0; i < projectsList.getLength(); i++) {
+            if (projectsList.item(i).getNodeType() != Node.ELEMENT_NODE) continue;
+            final Element project = (Element) projectsList.item(i);
+            final String projectName = project.getAttribute("name");
+            commonProjects.add(projectName);
+        }
+        return commonProjects;
+    }
+
     private static ArrayList<Map<String, Object>> parseDefinitions(InputStream is, String filter) {
         final ArrayList<Map<String, Object>> mDevicesList = new ArrayList<>();
 

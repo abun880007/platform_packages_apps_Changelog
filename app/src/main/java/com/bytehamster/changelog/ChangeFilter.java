@@ -1,6 +1,8 @@
 package com.bytehamster.changelog;
 
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -22,9 +24,11 @@ class ChangeFilter {
     private final boolean translations;
     private final String branch;
     private final SharedPreferences prefs;
+    private final Context context;
 
-    ChangeFilter(SharedPreferences prefs) {
-        this.prefs = prefs;
+    ChangeFilter(final Context context) {
+        this.context = context;
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
         displayAll = prefs.getBoolean("display_all", true);
         translations = prefs.getBoolean("translations", true);
         branch = prefs.getString("branch", Main.DEFAULT_BRANCH);
@@ -57,8 +61,7 @@ class ChangeFilter {
         String watchedDevices = prefs.getString("watched_devices", "<?xml version=\"1.0\" encoding=\"UTF-8\"?><devicesList></devicesList>");
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db;
-            db = dbf.newDocumentBuilder();
+            DocumentBuilder db = dbf.newDocumentBuilder();
             InputSource is = new InputSource();
             is.setCharacterStream(new StringReader(watchedDevices));
             Document mWatchedDoc = db.parse(is);
@@ -66,8 +69,8 @@ class ChangeFilter {
 
             if (!mUseProjectsList.isEmpty()) mUseProjectsList.clear();
 
-            if (! displayAll) {
-                mUseProjectsList.add("android_vendor_du");
+            if (!displayAll) {
+                mUseProjectsList.addAll(Devices.getCommonProjects(context));
                 NodeList gitList = mWatchedDoc.getDocumentElement().getElementsByTagName("git");
                 for (int i = 0; i < gitList.getLength(); i++) {
                     if (gitList.item(i).getNodeType() != Node.ELEMENT_NODE) continue;
