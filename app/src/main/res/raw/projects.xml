@@ -1,106 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <devicesList>
-    <oem name="Essential">
-        <device>
-            <name>PH-1</name>
-            <code>mata</code>
-            <repos>
-                <git name="device_essential_mata"/>
-                <git name="kernel_essential_msm8998"/>
-                <git name="vendor_essential"/>
-            </repos>
-        </device>
-    </oem>
-    <oem name="Google">
-        <device>
-            <name>Pixel 3</name>
-            <code>blueline</code>
-            <repos>
-                <git name="device_google_blueline"/>
-                <git name="device_google_crosshatch"/>
-                <git name="device_google_crosshatch-sepolicy"/>
-                <git name="kernel_google_bluecross"/>
-                <git name="vendor_google"/>
-            </repos>
-        </device>
-        <device>
-            <name>Pixel 3XL</name>
-            <code>crosshatch</code>
-            <repos>
-                <git name="device_google_crosshatch"/>
-                <git name="device_google_crosshatch-sepolicy"/>
-                <git name="kernel_google_bluecross"/>
-                <git name="vendor_google"/>
-            </repos>
-        </device>
-    </oem>
-    <oem name="Motorola">
-        <device>
-            <name>G5 Plus</name>
-            <code>potter</code>
-            <repos>
-                <git name="device_moto_potter"/>
-            </repos>
-        </device>
     </oem>
     <oem name="OnePlus">
         <device>
-            <name>3/3T</name>
-            <code>oneplus3</code>
+            <name>7</name>
+            <code>guacamoleb</code>
             <repos>
-                <git name="android_device_oneplus_oneplus3"/>
-                <git name="android_device_oneplus_extras"/>
-                <git name="android_kernel_oneplus_msm8996"/>
-                <git name="android_vendor_oneplus"/>
+                <git name="device_oneplus_guacamole"/>
+                <git name="device_oneplus_sm8150-common"/>
+                <git name="kernel_oneplus_sm8150"/>
+                <git name="vendor_oneplus_sm8150-common"/>
             </repos>
         </device>
         <device>
-            <name>6</name>
-            <code>enchilada</code>
+            <name>7 Pro</name>
+            <code>guacamole</code>
             <repos>
-                <git name="device_oneplus_enchilada"/>
-                <git name="device_oneplus_sdm845-common"/>
-                <git name="kernel_oneplus_sdm845"/>
-                <git name="vendor_oneplus_sdm845-common"/>
+                <git name="device_oneplus_guacamole"/>
+                <git name="device_oneplus_sm8150-common"/>
+                <git name="kernel_oneplus_sm8150"/>
+                <git name="vendor_oneplus_sm8150-common"/>
             </repos>
         </device>
         <device>
-            <name>6T</name>
-            <code>fajita</code>
+            <name>7 Pro 5G</name>
+            <code>guacamoleg</code>
             <repos>
-                <git name="device_oneplus_fajita"/>
-                <git name="device_oneplus_sdm845-common"/>
-                <git name="kernel_oneplus_sdm845"/>
-                <git name="vendor_oneplus_sdm845-common"/>
+                <git name="device_oneplus_guacamole"/>
+                <git name="device_oneplus_sm8150-common"/>
+                <git name="kernel_oneplus_sm8150"/>
+                <git name="vendor_oneplus_sm8150-common"/>
             </repos>
         </device>
     </oem>
-    <oem name="Xiaomi">
+    <oem name="Samsung">
         <device>
-            <name>Mi 8</name>
-            <code>dipper</code>
+            <name>Galaxy S9</name>
+            <code>starlte</code>
             <repos>
-                <git name="device_xiaomi_dipper"/>
-                <git name="kernel_xiaomi_sdm845"/>
-                <git name="proprietary_vendor_xiaomi"/>
+                <git name="android_device_samsung_starlte"/>
+                <git name="android_device_samsung_universal9810-common"/>               
+                <git name="android_kernel_samsung_universal9810"/>
+                <git name="proprietary_vendor_samsung"/>
+                <git name="proprietary_vendor_samsung_universal9810-common"/>
             </repos>
         </device>
         <device>
-            <name>Pocophone F1</name>
-            <code>beryllium</code>
+            <name>Galaxy S9+</name>
+            <code>star2lte</code>
             <repos>
-                <git name="device_xiaomi_beryllium"/>
-                <git name="kernel_xiaomi_sdm845"/>
-                <git name="proprietary_vendor_xiaomi"/>
-            </repos>
-        </device>
-        <device>
-            <name>Redmi Note 5</name>
-            <code>whyred</code>
-            <repos>
-                <git name="device_xiaomi_whyred"/>
-                <git name="kernel_xiaomi_sdm660"/>
-                <git name="proprietary_vendor_xiaomi"/>
+                <git name="android_device_samsung_star2lte"/>
+                <git name="android_device_samsung_universal9810-common"/>               
+                <git name="android_kernel_samsung_universal9810"/>
+                <git name="proprietary_vendor_samsung"/>
+                <git name="proprietary_vendor_samsung_universal9810-common"/>
             </repos>
         </device>
     </oem>
