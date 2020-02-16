@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
         @Override
         protected String doInBackground(String... args) {
             StringBuilder result = new StringBuilder();
-            URL url;
+            URL url = null;
             String data;
             try {
                 if (getProp("ro.mod.version", true).startsWith("WEEKLIES")) {
@@ -89,47 +89,30 @@ public class MainActivity extends Activity {
                             getProp("ro.product.device", false) + "/" +
                             getProp("ro.mod.version", false));
                     changelogAvailable = true;
-                } else {
+                } else if (getProp("ro.mod.version", true).startsWith("UNOFFICIAL")) {
                     url = new URL(urlChangelog + "not-found");
                     changelogAvailable = false;
                 }
 
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setRequestMethod("GET");
-                urlConnection.setDoOutput(true);
-                urlConnection.connect();
+                if (url != null) {
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                    urlConnection.setRequestMethod("GET");
+                    urlConnection.setDoOutput(true);
+                    urlConnection.connect();
 
-                BufferedReader br = new BufferedReader(
-                        new InputStreamReader(url.openStream()));
+                    BufferedReader br = new BufferedReader(
+                            new InputStreamReader(url.openStream()));
 
-                while ((data = br.readLine()) != null) {
-                    result.append(data).append("\n");
+                    while ((data = br.readLine()) != null) {
+                        result.append(data).append("\n");
+                    }
+                    br.close();
                 }
-                br.close();
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
                 if (urlConnection != null) {
                     urlConnection.disconnect();
-                    try {
-                        url = new URL(urlChangelog + "not-found");
-                        changelogAvailable = false;
-
-                        urlConnection = (HttpURLConnection) url.openConnection();
-                        urlConnection.setRequestMethod("GET");
-                        urlConnection.setDoOutput(true);
-                        urlConnection.connect();
-
-                        BufferedReader br = new BufferedReader(
-                                new InputStreamReader(url.openStream()));
-
-                        while ((data = br.readLine()) != null) {
-                            result.append(data).append("\n");
-                        }
-                        br.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
                 }
             }
             return result.toString();
