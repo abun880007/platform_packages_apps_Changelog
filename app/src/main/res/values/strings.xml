@@ -21,7 +21,7 @@
     <string name="changelog_no_connection_summary">Check that you\'re online and that your phone or tablet is connected to the internet.</string>
     <string name="changelog_url" translatable="false">https://raw.githubusercontent.com/DirtyUnicorns/android_packages_apps_DU-Changelog/jsons/</string>
 
-    <string name="dialog_github">Github</string>
+    <string name="dialog_github" translatable="false">Github</string>
     <string name="dialog_github_url" translatable="false">https://github.com/DirtyUnicorns</string>
 
 </resources>
