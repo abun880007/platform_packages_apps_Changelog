@@ -1,0 +1,13 @@
+[
+{
+"changelog": "- Added navbar customization under Dirty Tweaks
+
+- Fixed theme issues in SystemUI
+
+- Fixed Google Fi issues on the P4XL
+
+- Added fixes from AOSP to reduce the possibly of crashes
+
+"
+}
+]
