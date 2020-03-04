@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Dirty Unicorns Project
+ * Copyright (C) 2019 TUB
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.dirtyunicorns.changelog;
+package com.tub.changelog;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -38,8 +38,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import static com.dirtyunicorns.changelog.Utils.getProp;
-import static com.dirtyunicorns.changelog.Utils.isConnected;
+import static com.tub.changelog.Utils.getProp;
+import static com.tub.changelog.Utils.isConnected;
 
 public class MainActivity extends Activity {
 

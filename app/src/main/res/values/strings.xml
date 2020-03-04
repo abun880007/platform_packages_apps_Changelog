@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2020 The Dirty Unicorns Project
+<!-- Copyright (C) 20199 TUB
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@
     <string name="changelog_unavailable">Changelog not available</string>
     <string name="changelog_no_connection_title">No internet connection</string>
     <string name="changelog_no_connection_summary">Check that you\'re online and that your phone or tablet is connected to the internet.</string>
-    <string name="changelog_url" translatable="false">https://raw.githubusercontent.com/DirtyUnicorns/android_packages_apps_DU-Changelog/jsons/</string>
+    <string name="changelog_url" translatable="false">https://raw.githubusercontent.com/abun880007/android_packages_apps_Changelog/jsons/</string>
 
     <string name="dialog_github" translatable="false">Github</string>
-    <string name="dialog_github_url" translatable="false">https://github.com/DirtyUnicorns</string>
+    <string name="dialog_github_url" translatable="false">https://github.com/abun880007</string>
 
 </resources>

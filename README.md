@@ -1,11 +1,10 @@
-DU Changelog
+Changelog
 ==============
 
-Change is inevitable -- except from a vending machine
 
 ## License
 
-    Copyright (C) 2020 The Dirty Unicorns Project
+    Copyright (C) 2019 TUB
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
