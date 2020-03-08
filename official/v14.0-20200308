@@ -1,0 +1,20 @@
+[
+{
+"changelog": "- Merged in March's security update
+
+- Added new tap to pause feature for P4XL
+
+- Fixed Google Fi issues on the P4XL
+
+- Added navbar and gestures customization 
+
+- Fixed several AOSP issues under the hood
+
+- Introduced weeklies and official build notifier
+
+- Fixed a lot of theme related issues
+
+"
+}
+]
+
