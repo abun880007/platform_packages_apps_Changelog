@@ -1,6 +1,6 @@
 [
 {
-"changelog": "- Merged in March's security update
+"changelog": "- Merged in May's security update
 
 - Added new tap to pause feature for P4XL
 
@@ -12,7 +12,19 @@
 
 - Introduced weeklies and official build notifier
 
-- Fixed a lot of theme related issues
+- Added ability to hide navigation bar gesture completely
+
+- Added bluetooth long press panel from QS tile
+
+- Added switch under Settings/Battery to toggle QS battery percentage
+
+- Added Screen Off animations under Dirty Tweaks
+
+- Added L back swipe gesture and actions
+
+- Added battery styles, with fixes for Settings/Battery view
+
+- Device specific fixes across multiple devices
 
 "
 }
