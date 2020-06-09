@@ -1,6 +1,13 @@
 [
 {
-"changelog": "- Merged in May's security update
+"changelog": "- Merged in June's security update
+
+- Redesigned Advanced settings
+
+
+- Reverse engineered and implemented NGA (next generation assistant). Pixel 4/4XL only. Edge lights work on all devices.
+
+- Added various AOSP fixes to improve the overall experience
 
 - Added new tap to pause feature for P4XL
 
